@@ -1,0 +1,552 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import 'component2_model.dart';
+export 'component2_model.dart';
+
+class Component2Widget extends StatefulWidget {
+  const Component2Widget({
+    super.key,
+    this.nnumber2,
+    this.company,
+    this.timestamp,
+    this.email1,
+    this.rating,
+  });
+
+  final String? nnumber2;
+  final String? company;
+  final String? timestamp;
+  final String? email1;
+  final double? rating;
+
+  @override
+  State<Component2Widget> createState() => _Component2WidgetState();
+}
+
+class _Component2WidgetState extends State<Component2Widget> {
+  late Component2Model _model;
+
+  @override
+  void setState(VoidCallback callback) {
+    super.setState(callback);
+    _model.onUpdate();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => Component2Model());
+
+    _model.commentTextController ??= TextEditingController();
+    _model.commentFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
+  }
+
+  @override
+  void dispose() {
+    _model.maybeDispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Row(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Expanded(
+              child: Align(
+                alignment: AlignmentDirectional(-1, 0),
+                child: Text(
+                  valueOrDefault<String>(
+                    widget!.timestamp,
+                    'na',
+                  ).maybeHandleOverflow(
+                    maxChars: 11,
+                  ),
+                  style: FlutterFlowTheme.of(context).labelMedium.override(
+                        font: GoogleFonts.readexPro(
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .labelMedium
+                              .fontWeight,
+                          fontStyle: FlutterFlowTheme.of(context)
+                              .labelMedium
+                              .fontStyle,
+                        ),
+                        letterSpacing: 0.0,
+                        fontWeight:
+                            FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                      ),
+                ),
+              ),
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Align(
+                  alignment: AlignmentDirectional(1, 0),
+                  child: RichText(
+                    textScaler: MediaQuery.of(context).textScaler,
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'User Name - ',
+                          style:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    font: GoogleFonts.readexPro(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
+                                  ),
+                        )
+                      ],
+                      style: FlutterFlowTheme.of(context).labelMedium.override(
+                            font: GoogleFonts.readexPro(
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .fontStyle,
+                            ),
+                            letterSpacing: 0.0,
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .fontStyle,
+                          ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Align(
+                    alignment: AlignmentDirectional(1, 0),
+                    child: Text(
+                      valueOrDefault<String>(
+                        widget!.email1,
+                        'na',
+                      ).maybeHandleOverflow(
+                        maxChars: 2,
+                      ),
+                      style: FlutterFlowTheme.of(context).labelMedium.override(
+                            font: GoogleFonts.readexPro(
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .fontStyle,
+                            ),
+                            letterSpacing: 0.0,
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .fontStyle,
+                          ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+        Align(
+          alignment: AlignmentDirectional(0, 0),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                RatingBar.builder(
+                  onRatingUpdate: (newValue) =>
+                      safeSetState(() => _model.ratingBarValue = newValue),
+                  itemBuilder: (context, index) => Icon(
+                    Icons.star_rounded,
+                    color: FlutterFlowTheme.of(context).primary,
+                  ),
+                  direction: Axis.horizontal,
+                  initialRating: _model.ratingBarValue ??= 0,
+                  unratedColor: FlutterFlowTheme.of(context).accent1,
+                  itemCount: 5,
+                  itemSize: 24,
+                  glowColor: FlutterFlowTheme.of(context).primary,
+                ),
+              ],
+            ),
+          ),
+        ),
+        Row(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            RichText(
+              textScaler: MediaQuery.of(context).textScaler,
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text: 'Aircraft # - ',
+                    style: FlutterFlowTheme.of(context).labelMedium.override(
+                          font: GoogleFonts.readexPro(
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .fontStyle,
+                          ),
+                          letterSpacing: 0.0,
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .labelMedium
+                              .fontWeight,
+                          fontStyle: FlutterFlowTheme.of(context)
+                              .labelMedium
+                              .fontStyle,
+                        ),
+                  )
+                ],
+                style: FlutterFlowTheme.of(context).labelMedium.override(
+                      font: GoogleFonts.readexPro(
+                        fontWeight:
+                            FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                      ),
+                      letterSpacing: 0.0,
+                      fontWeight:
+                          FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                    ),
+              ),
+            ),
+            Expanded(
+              child: Align(
+                alignment: AlignmentDirectional(-1, 0),
+                child: Text(
+                  valueOrDefault<String>(
+                    widget!.nnumber2,
+                    'na',
+                  ).maybeHandleOverflow(
+                    maxChars: 8,
+                  ),
+                  style: FlutterFlowTheme.of(context).labelMedium.override(
+                        font: GoogleFonts.readexPro(
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .labelMedium
+                              .fontWeight,
+                          fontStyle: FlutterFlowTheme.of(context)
+                              .labelMedium
+                              .fontStyle,
+                        ),
+                        letterSpacing: 0.0,
+                        fontWeight:
+                            FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                      ),
+                ),
+              ),
+            ),
+            Align(
+              alignment: AlignmentDirectional(0, 0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Align(
+                    alignment: AlignmentDirectional(1, 0),
+                    child: RichText(
+                      textScaler: MediaQuery.of(context).textScaler,
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: 'Company - ',
+                            style: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  font: GoogleFonts.readexPro(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
+                                  ),
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontStyle,
+                                ),
+                          )
+                        ],
+                        style:
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  font: GoogleFonts.readexPro(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
+                                  ),
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontStyle,
+                                ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional(1, 0),
+                    child: Text(
+                      valueOrDefault<String>(
+                        widget!.company,
+                        'na',
+                      ).maybeHandleOverflow(
+                        maxChars: 13,
+                      ),
+                      style: FlutterFlowTheme.of(context).labelMedium.override(
+                            font: GoogleFonts.readexPro(
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .fontStyle,
+                            ),
+                            letterSpacing: 0.0,
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .fontStyle,
+                          ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        Row(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Expanded(
+              child: Container(
+                width: 410,
+                child: Container(
+                  width: double.infinity,
+                  child: TextFormField(
+                    controller: _model.commentTextController,
+                    focusNode: _model.commentFocusNode,
+                    autofocus: false,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      isDense: true,
+                      labelStyle:
+                          FlutterFlowTheme.of(context).labelMedium.override(
+                                font: GoogleFonts.readexPro(
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontStyle,
+                                ),
+                                letterSpacing: 0.0,
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .fontStyle,
+                                lineHeight: 0,
+                              ),
+                      hintText: 'Tell us about your flight...',
+                      hintStyle:
+                          FlutterFlowTheme.of(context).labelMedium.override(
+                                font: GoogleFonts.readexPro(
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontStyle,
+                                ),
+                                fontSize: 14,
+                                letterSpacing: 0.0,
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .fontStyle,
+                              ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color:
+                              FlutterFlowTheme.of(context).backgroundComponents,
+                          width: 1,
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color:
+                              FlutterFlowTheme.of(context).backgroundComponents,
+                          width: 1,
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      errorBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).error,
+                          width: 1,
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).error,
+                          width: 1,
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      filled: true,
+                      fillColor: FlutterFlowTheme.of(context).info,
+                    ),
+                    style: FlutterFlowTheme.of(context).labelMedium.override(
+                          font: GoogleFonts.readexPro(
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .fontStyle,
+                          ),
+                          letterSpacing: 0.0,
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .labelMedium
+                              .fontWeight,
+                          fontStyle: FlutterFlowTheme.of(context)
+                              .labelMedium
+                              .fontStyle,
+                          lineHeight: 0,
+                        ),
+                    textAlign: TextAlign.start,
+                    maxLength: 250,
+                    maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                    buildCounter: (context,
+                            {required currentLength,
+                            required isFocused,
+                            maxLength}) =>
+                        null,
+                    validator: _model.commentTextControllerValidator
+                        .asValidator(context),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+        Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (_model.commentTextController.text != null &&
+                _model.commentTextController.text != '')
+              Align(
+                alignment: AlignmentDirectional(0, 0),
+                child: FFButtonWidget(
+                  onPressed: () async {
+                    await ReviewsRecord.collection.doc().set({
+                      ...createReviewsRecordData(
+                        rating: _model.ratingBarValue?.round(),
+                        review: _model.commentTextController.text,
+                        nnumber: widget!.nnumber2,
+                        nAMECompany: widget!.company,
+                        email: widget!.email1,
+                      ),
+                      ...mapToFirestore(
+                        {
+                          'DateCreated': FieldValue.serverTimestamp(),
+                        },
+                      ),
+                    });
+                    safeSetState(() {
+                      _model.commentTextController?.clear();
+                    });
+                  },
+                  text: 'Add Review',
+                  options: FFButtonOptions(
+                    height: 41,
+                    padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                    iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                    color: FlutterFlowTheme.of(context).primary,
+                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                          font: GoogleFonts.readexPro(
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .fontStyle,
+                          ),
+                          color: Colors.white,
+                          letterSpacing: 0.0,
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .titleSmall
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                        ),
+                    elevation: 0,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+              ),
+          ],
+        ),
+      ],
+    );
+  }
+}
