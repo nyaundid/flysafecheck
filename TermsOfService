@@ -1,0 +1,284 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
+import '/index.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import 'terms_of_service_model.dart';
+export 'terms_of_service_model.dart';
+
+class TermsOfServiceWidget extends StatefulWidget {
+  const TermsOfServiceWidget({super.key});
+
+  static String routeName = 'TermsOfService';
+  static String routePath = '/termsOfService';
+
+  @override
+  State<TermsOfServiceWidget> createState() => _TermsOfServiceWidgetState();
+}
+
+class _TermsOfServiceWidgetState extends State<TermsOfServiceWidget> {
+  late TermsOfServiceModel _model;
+
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => TermsOfServiceModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await authManager.refreshUser();
+      if (!currentUserEmailVerified) {
+        context.pushNamed(AuthWelcomeScreenWidget.routeName);
+      }
+    });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        appBar: currentUserEmailVerified
+            ? PreferredSize(
+                preferredSize: Size.fromHeight(120),
+                child: AppBar(
+                  backgroundColor:
+                      FlutterFlowTheme.of(context).primaryBackground,
+                  automaticallyImplyLeading: false,
+                  actions: [],
+                  flexibleSpace: FlexibleSpaceBar(
+                    title: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
+                                child: FlutterFlowIconButton(
+                                  borderColor: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  borderRadius: 30,
+                                  borderWidth: 1,
+                                  buttonSize: 50,
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  icon: Icon(
+                                    Icons.arrow_back_rounded,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    size: 30,
+                                  ),
+                                  onPressed: () async {
+                                    context.pushNamed(HomeWidget.routeName);
+                                  },
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
+                                child: Text(
+                                  'Back',
+                                  style: FlutterFlowTheme.of(context)
+                                      .headlineMedium
+                                      .override(
+                                        font: GoogleFonts.outfit(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineMedium
+                                                  .fontStyle,
+                                        ),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        fontSize: 16,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .headlineMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .headlineMedium
+                                            .fontStyle,
+                                      ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Text(
+                          'Terms of Service',
+                          style: FlutterFlowTheme.of(context)
+                              .headlineMedium
+                              .override(
+                                font: GoogleFonts.outfit(
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .headlineMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .headlineMedium
+                                      .fontStyle,
+                                ),
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                fontSize: 22,
+                                letterSpacing: 0.0,
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .headlineMedium
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .headlineMedium
+                                    .fontStyle,
+                              ),
+                        ),
+                      ],
+                    ),
+                    centerTitle: true,
+                    expandedTitleScale: 1.0,
+                  ),
+                  elevation: 2,
+                ),
+              )
+            : null,
+        body: SafeArea(
+          top: true,
+          child: Visibility(
+            visible: currentUserEmailVerified,
+            child: AuthUserStreamWidget(
+              builder: (context) => Container(
+                decoration: BoxDecoration(),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Align(
+                        alignment: AlignmentDirectional(1, 0),
+                        child: FFButtonWidget(
+                          onPressed: () {
+                            print('Button pressed ...');
+                          },
+                          text: 'Logout',
+                          options: FFButtonOptions(
+                            height: 40,
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                            iconPadding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                            color: FlutterFlowTheme.of(context).primary,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  font: GoogleFonts.readexPro(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
+                                ),
+                            elevation: 3,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                      ),
+                      RichText(
+                        textScaler: MediaQuery.of(context).textScaler,
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text:
+                                  'Fly Safe Check Terms of Service\n\nEffective Date: 11/28/2024\n\nWelcome to Fly Safe Check! These Terms of Service (\"Terms\") govern your use of the Fly Safe Check web application (\"App\") and its associated services provided by Fly Safe Check (\"we,\" \"us,\" \"our\"). By accessing or using our App, you agree to be bound by these Terms and our Privacy Policy. If you do not agree to these Terms or the Privacy Policy, please do not use our App.\n\nScope of Services\n\n1.1 Description of Services: Fly Safe Check provides users with access to FAA Service Difficulty Reports (SDRs) information on aircraft. Our App uses AI to generate severity scores and provides details such as date, aircraft make and model, discrepancy, part name, condition, and part defect location related to SDRs.\n\n1.2 Donations: We offer the option for users to support Fly Safe Check through donations via Cash App and PayPal. Donations are voluntary and non-refundable.\n\n1.3 Links to Social Media: Our App includes links to social media sites (e.g., Facebook, Instagram, Twitter, YouTube) for informational and promotional purposes.\n\nUser Responsibilities\n\n2.1 Account Registration: You may need to register an account to access certain features of the App. You agree to provide accurate, current, and complete information during registration and to update such information to keep it accurate, current, and complete.\n\n2.2 Prohibited Activities: You agree not to engage in any of the following prohibited activities:\n\nViolating any laws or regulations.\nInterfering with or disrupting the App or servers.\nAttempting to gain unauthorized access to accounts or data.\nEngaging in any conduct that restricts or inhibits anyoneâs use or enjoyment of the App.\n2.3 User Contributions: If the App allows users to submit content or information, you are solely responsible for your contributions, and you warrant that your contributions comply with applicable laws and do not infringe any third-party rights.\n\nIntellectual Property\n\n3.1 Ownership: All content and materials available on the App, including but not limited to text, graphics, logos, images, and software, are the property of Fly Safe Check or its licensors and are protected by copyright, trademark, and other intellectual property laws.\n\n3.2 License: Subject to these Terms, we grant you a limited, non-exclusive, non-transferable license to access and use the App for your personal or internal business purposes.\n\nPrivacy\n\n4.1 Privacy Policy: Your use of the App is also governed by our Privacy Policy, which explains how we collect, use, and disclose your information. By using the App, you consent to our collection and use of your information as described in the Privacy Policy.\n\nDisclaimer of Warranties; Limitation of Liability\n\n5.1 Disclaimer: The App and its content are provided on an \"as is\" and \"as available\" basis without any warranties of any kind, either express or implied. We do not warrant that the App will be uninterrupted or error-free, that defects will be corrected, or that the App is free of viruses or other harmful components.\n\n5.2 Limitation of Liability: To the fullest extent permitted by law, in no event shall Fly Safe Check or its affiliates, directors, officers, employees, agents, or licensors be liable for any indirect, consequential, incidental, special, punitive, or exemplary damages, including but not limited to damages for loss of profits, goodwill, use, data, or other intangible losses.\n\nModifications to Terms\n\n6.1 Changes: We reserve the right to modify these Terms at any time. Any changes will be effective immediately upon posting the revised Terms on the App. Your continued use of the App after the posting of the revised Terms constitutes your acceptance of the changes.\n\nGoverning Law; Dispute Resolution\n\n7.1 Governing Law: These Terms shall be governed by and construed in accordance with the laws of [Your Jurisdiction], without regard to its conflict of law principles.\n\n7.2 Dispute Resolution: Any dispute arising out of or relating to these Terms or the App shall be resolved exclusively in the state or federal courts located in [Your Jurisdiction], and you hereby consent to the jurisdiction and venue of such courts.\n\nContact Us\n\n8.1 Questions: If you have any questions about these Terms, please contact us at FlySafeCheck@gmail.com.\n\n',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    font: GoogleFonts.readexPro(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
+                            )
+                          ],
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    font: GoogleFonts.readexPro(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
