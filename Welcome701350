@@ -1,0 +1,2028 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
+import '/backend/backend.dart';
+import '/components/component2_widget.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
+import '/index.dart';
+import 'package:easy_debounce/easy_debounce.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import 'welcome701350_model.dart';
+export 'welcome701350_model.dart';
+
+class Welcome701350Widget extends StatefulWidget {
+  const Welcome701350Widget({super.key});
+
+  static String routeName = 'Welcome701350';
+  static String routePath = '/Welcome701350';
+
+  @override
+  State<Welcome701350Widget> createState() => _Welcome701350WidgetState();
+}
+
+class _Welcome701350WidgetState extends State<Welcome701350Widget> {
+  late Welcome701350Model _model;
+
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => Welcome701350Model());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await authManager.refreshUser();
+    });
+
+    _model.inputQueryTextController ??= TextEditingController();
+    _model.inputQueryFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        body: SafeArea(
+          top: true,
+          child: Visibility(
+            visible: currentUserEmailVerified,
+            child: AuthUserStreamWidget(
+              builder: (context) => Container(
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).primaryBackground,
+                  shape: BoxShape.rectangle,
+                  border: Border.all(
+                    color: FlutterFlowTheme.of(context).primaryBackground,
+                  ),
+                ),
+                child: SingleChildScrollView(
+                  primary: false,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Flexible(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                ),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(0),
+                                    child: Image.asset(
+                                      'assets/images/07D1882A-679C-4AF7-A2E6-6B5EC891CEED.jpeg',
+                                      width: 393,
+                                      height: 440,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Align(
+                              alignment: AlignmentDirectional(0, 0),
+                              child: Container(
+                                width: 383,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  border: Border.all(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                  ),
+                                ),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Align(
+                                      alignment: AlignmentDirectional(-1, -1),
+                                      child: FFButtonWidget(
+                                        onPressed: () async {
+                                          GoRouter.of(context)
+                                              .prepareAuthEvent();
+                                          await authManager.signOut();
+                                          GoRouter.of(context)
+                                              .clearRedirectLocation();
+
+                                          context.goNamedAuth(
+                                              AuthWelcomeScreenWidget.routeName,
+                                              context.mounted);
+                                        },
+                                        text: 'Logout',
+                                        options: FFButtonOptions(
+                                          height: 40,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  24, 0, 24, 0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 0, 0, 0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .titleSmall
+                                              .override(
+                                                font: GoogleFonts.readexPro(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontStyle,
+                                                ),
+                                                color: Colors.white,
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontStyle,
+                                              ),
+                                          elevation: 3,
+                                          borderSide: BorderSide(
+                                            color: Colors.transparent,
+                                            width: 1,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                        ),
+                                      ),
+                                    ),
+                                    Align(
+                                      alignment: AlignmentDirectional(1, 0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Expanded(
+                                            child: Align(
+                                              alignment:
+                                                  AlignmentDirectional(1, 0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            1, 0),
+                                                    child: Text(
+                                                      'Search And Leave Reviews Below',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                font: GoogleFonts
+                                                                    .readexPro(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                fontSize: 17,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                              ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                border: Border.all(
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                ),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    child: Align(
+                                      alignment: AlignmentDirectional(0, 0),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(8),
+                                        child: Image.asset(
+                                          'assets/images/plane222-removebg-preview.png',
+                                          width: 388,
+                                          height: 126,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                border: Border.all(
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                ),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Align(
+                                    alignment: AlignmentDirectional(-0.1, 0),
+                                    child: Container(
+                                      width: 200,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBackground,
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 0, 0, 20),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Expanded(
+                                              child: TextFormField(
+                                                controller: _model
+                                                    .inputQueryTextController,
+                                                focusNode:
+                                                    _model.inputQueryFocusNode,
+                                                onChanged: (_) =>
+                                                    EasyDebounce.debounce(
+                                                  '_model.inputQueryTextController',
+                                                  Duration(milliseconds: 2000),
+                                                  () => safeSetState(() {}),
+                                                ),
+                                                onFieldSubmitted: (_) async {},
+                                                autofocus: false,
+                                                obscureText: false,
+                                                decoration: InputDecoration(
+                                                  isDense: false,
+                                                  labelText: 'Search Aircraft',
+                                                  labelStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        font: GoogleFonts
+                                                            .readexPro(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontStyle,
+                                                        ),
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .fontStyle,
+                                                      ),
+                                                  alignLabelWithHint: false,
+                                                  hintStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .titleMedium
+                                                      .override(
+                                                        font: GoogleFonts
+                                                            .readexPro(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleMedium
+                                                                .fontStyle,
+                                                      ),
+                                                  enabledBorder:
+                                                      UnderlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .alternate,
+                                                      width: 2,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8),
+                                                  ),
+                                                  focusedBorder:
+                                                      UnderlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      width: 2,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8),
+                                                  ),
+                                                  errorBorder:
+                                                      UnderlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 2,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8),
+                                                  ),
+                                                  focusedErrorBorder:
+                                                      UnderlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 2,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8),
+                                                  ),
+                                                ),
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                                maxLength: 8,
+                                                maxLengthEnforcement:
+                                                    MaxLengthEnforcement
+                                                        .enforced,
+                                                buildCounter: (context,
+                                                        {required currentLength,
+                                                        required isFocused,
+                                                        maxLength}) =>
+                                                    null,
+                                                validator: _model
+                                                    .inputQueryTextControllerValidator
+                                                    .asValidator(context),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              width: 397,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                border: Border.all(
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                ),
+                              ),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  RichText(
+                                    textScaler:
+                                        MediaQuery.of(context).textScaler,
+                                    text: TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text:
+                                              'Tip: To find the aircraft number, check the tail section of the aircraft. Be sure to include the full aircraft number for accurate results. If you require additional aircraft information, please subscribe below.\n',
+                                          style: FlutterFlowTheme.of(context)
+                                              .titleSmall
+                                              .override(
+                                                font: GoogleFonts.readexPro(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontWeight,
+                                                  fontStyle: FontStyle.italic,
+                                                ),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                fontSize: 14,
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontWeight,
+                                                fontStyle: FontStyle.italic,
+                                              ),
+                                        )
+                                      ],
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
+                                            fontSize: 14,
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  RichText(
+                                    textScaler:
+                                        MediaQuery.of(context).textScaler,
+                                    text: TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text:
+                                              'Attention: Aircraft N-numbers can change when planes are sold or owners request a new one. This doesn\'t happen often, but for accurate reviews, always check the aircraft\'s company, as the N-number might have been reassigned.',
+                                          style: FlutterFlowTheme.of(context)
+                                              .titleSmall
+                                              .override(
+                                                font: GoogleFonts.readexPro(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontWeight,
+                                                  fontStyle: FontStyle.italic,
+                                                ),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                fontSize: 14,
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontWeight,
+                                                fontStyle: FontStyle.italic,
+                                              ),
+                                        )
+                                      ],
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
+                                            fontSize: 14,
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Align(
+                              alignment: AlignmentDirectional(0, 0),
+                              child: Padding(
+                                padding: EdgeInsets.all(6),
+                                child: SafeArea(
+                                  child: ClipRRect(
+                                    child: Container(
+                                      width: 367,
+                                      height: 164,
+                                      constraints: BoxConstraints(
+                                        minWidth: double.infinity,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        shape: BoxShape.rectangle,
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBackground,
+                                          width: 2,
+                                        ),
+                                      ),
+                                      child: StreamBuilder<List<ReviewsRecord>>(
+                                        stream: queryReviewsRecord(
+                                          queryBuilder: (reviewsRecord) =>
+                                              reviewsRecord.where(
+                                            'Nnumber',
+                                            isEqualTo: _model
+                                                .inputQueryTextController.text,
+                                          ),
+                                        ),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: LinearProgressIndicator(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                              ),
+                                            );
+                                          }
+                                          List<ReviewsRecord>
+                                              listViewReviewsRecordList =
+                                              snapshot.data!;
+
+                                          return ListView.builder(
+                                            padding: EdgeInsets.zero,
+                                            shrinkWrap: true,
+                                            scrollDirection: Axis.vertical,
+                                            itemCount: listViewReviewsRecordList
+                                                .length,
+                                            itemBuilder:
+                                                (context, listViewIndex) {
+                                              final listViewReviewsRecord =
+                                                  listViewReviewsRecordList[
+                                                      listViewIndex];
+                                              return Padding(
+                                                padding: EdgeInsets.all(6),
+                                                child: Container(
+                                                  width: double.infinity,
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.white,
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                        blurRadius: 3,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        offset: Offset(
+                                                          0,
+                                                          1,
+                                                        ),
+                                                      )
+                                                    ],
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8),
+                                                    border: Border.all(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .primaryBackground,
+                                                    ),
+                                                  ),
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Expanded(
+                                                        child: Align(
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  0, 0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Expanded(
+                                                                child: Align(
+                                                                  alignment:
+                                                                      AlignmentDirectional(
+                                                                          -1,
+                                                                          0),
+                                                                  child: Text(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      listViewReviewsRecord
+                                                                          .dateCreated
+                                                                          ?.toString(),
+                                                                      'na',
+                                                                    ).maybeHandleOverflow(
+                                                                      maxChars:
+                                                                          11,
+                                                                    ),
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .override(
+                                                                          font:
+                                                                              GoogleFonts.readexPro(
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                          ),
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontStyle,
+                                                                        ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Expanded(
+                                                                child: Align(
+                                                                  alignment:
+                                                                      AlignmentDirectional(
+                                                                          1, 0),
+                                                                  child:
+                                                                      RichText(
+                                                                    textScaler:
+                                                                        MediaQuery.of(context)
+                                                                            .textScaler,
+                                                                    text:
+                                                                        TextSpan(
+                                                                      children: [
+                                                                        TextSpan(
+                                                                          text:
+                                                                              'User Name - ',
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .override(
+                                                                                font: GoogleFonts.readexPro(
+                                                                                  fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                                ),
+                                                                                letterSpacing: 0.0,
+                                                                                fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                              ),
+                                                                        )
+                                                                      ],
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .override(
+                                                                            font:
+                                                                                GoogleFonts.readexPro(
+                                                                              fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                            ),
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                          ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Align(
+                                                                alignment:
+                                                                    AlignmentDirectional(
+                                                                        1, 0),
+                                                                child: Text(
+                                                                  listViewReviewsRecord
+                                                                      .email
+                                                                      .maybeHandleOverflow(
+                                                                    maxChars: 2,
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .override(
+                                                                        font: GoogleFonts
+                                                                            .readexPro(
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontStyle,
+                                                                        ),
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .fontStyle,
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        child:
+                                                            SingleChildScrollView(
+                                                          scrollDirection:
+                                                              Axis.horizontal,
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Align(
+                                                                alignment:
+                                                                    AlignmentDirectional(
+                                                                        0, 0),
+                                                                child:
+                                                                    RatingBarIndicator(
+                                                                  itemBuilder:
+                                                                      (context,
+                                                                              index) =>
+                                                                          Icon(
+                                                                    Icons
+                                                                        .star_rounded,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                  ),
+                                                                  direction: Axis
+                                                                      .horizontal,
+                                                                  rating: listViewReviewsRecord
+                                                                      .rating
+                                                                      .toDouble(),
+                                                                  unratedColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .accent1,
+                                                                  itemCount: 5,
+                                                                  itemSize: 24,
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        child: Align(
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  1, 0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Align(
+                                                                alignment:
+                                                                    AlignmentDirectional(
+                                                                        -1, 0),
+                                                                child: RichText(
+                                                                  textScaler: MediaQuery.of(
+                                                                          context)
+                                                                      .textScaler,
+                                                                  text:
+                                                                      TextSpan(
+                                                                    children: [
+                                                                      TextSpan(
+                                                                        text:
+                                                                            'Aircraft # - ',
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .override(
+                                                                              font: GoogleFonts.readexPro(
+                                                                                fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                              ),
+                                                                              letterSpacing: 0.0,
+                                                                              fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                            ),
+                                                                      )
+                                                                    ],
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .override(
+                                                                          font:
+                                                                              GoogleFonts.readexPro(
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                          ),
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontStyle,
+                                                                        ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Align(
+                                                                alignment:
+                                                                    AlignmentDirectional(
+                                                                        -1, 0),
+                                                                child: Text(
+                                                                  listViewReviewsRecord
+                                                                      .nnumber
+                                                                      .maybeHandleOverflow(
+                                                                    maxChars: 8,
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .override(
+                                                                        font: GoogleFonts
+                                                                            .readexPro(
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontStyle,
+                                                                        ),
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .fontStyle,
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                              Expanded(
+                                                                child: Align(
+                                                                  alignment:
+                                                                      AlignmentDirectional(
+                                                                          1, 0),
+                                                                  child:
+                                                                      RichText(
+                                                                    textScaler:
+                                                                        MediaQuery.of(context)
+                                                                            .textScaler,
+                                                                    text:
+                                                                        TextSpan(
+                                                                      children: [
+                                                                        TextSpan(
+                                                                          text:
+                                                                              'Company -  ',
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .override(
+                                                                                font: GoogleFonts.readexPro(
+                                                                                  fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                                ),
+                                                                                letterSpacing: 0.0,
+                                                                                fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                              ),
+                                                                        )
+                                                                      ],
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .override(
+                                                                            font:
+                                                                                GoogleFonts.readexPro(
+                                                                              fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                            ),
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                          ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Align(
+                                                                alignment:
+                                                                    AlignmentDirectional(
+                                                                        0.95,
+                                                                        0),
+                                                                child: Text(
+                                                                  listViewReviewsRecord
+                                                                      .nAMECompany
+                                                                      .maybeHandleOverflow(
+                                                                    maxChars:
+                                                                        13,
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .override(
+                                                                        font: GoogleFonts
+                                                                            .readexPro(
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontStyle,
+                                                                        ),
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .fontStyle,
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      RichText(
+                                                        textScaler:
+                                                            MediaQuery.of(
+                                                                    context)
+                                                                .textScaler,
+                                                        text: TextSpan(
+                                                          children: [
+                                                            TextSpan(
+                                                              text: 'Review',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    font: GoogleFonts
+                                                                        .readexPro(
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontStyle,
+                                                                    ),
+                                                                    fontSize:
+                                                                        43,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                    decoration:
+                                                                        TextDecoration
+                                                                            .underline,
+                                                                  ),
+                                                            )
+                                                          ],
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .labelMedium
+                                                              .override(
+                                                                font: GoogleFonts
+                                                                    .readexPro(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                fontSize: 43,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          border: Border.all(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryText,
+                                                          ),
+                                                        ),
+                                                        child: Text(
+                                                          listViewReviewsRecord
+                                                              .review,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .labelMedium
+                                                              .override(
+                                                                font: GoogleFonts
+                                                                    .readexPro(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: AlignmentDirectional(0, 0),
+                              child: Padding(
+                                padding: EdgeInsets.all(6),
+                                child: SafeArea(
+                                  child: ClipRRect(
+                                    child: Container(
+                                      width: 367,
+                                      height: 164,
+                                      constraints: BoxConstraints(
+                                        minWidth: double.infinity,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        shape: BoxShape.rectangle,
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBackground,
+                                          width: 2,
+                                        ),
+                                      ),
+                                      child: StreamBuilder<List<ReviewsRecord>>(
+                                        stream: queryReviewsRecord(
+                                          queryBuilder: (reviewsRecord) =>
+                                              reviewsRecord.where(
+                                            'Nnumber',
+                                            isEqualTo: _model
+                                                .inputQueryTextController.text,
+                                          ),
+                                          singleRecord: true,
+                                        ),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: LinearProgressIndicator(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                              ),
+                                            );
+                                          }
+                                          List<ReviewsRecord>
+                                              listViewReviewsRecordList =
+                                              snapshot.data!;
+                                          // Return an empty Container when the item does not exist.
+                                          if (snapshot.data!.isEmpty) {
+                                            return Container();
+                                          }
+                                          final listViewReviewsRecord =
+                                              listViewReviewsRecordList
+                                                      .isNotEmpty
+                                                  ? listViewReviewsRecordList
+                                                      .first
+                                                  : null;
+
+                                          return ListView(
+                                            padding: EdgeInsets.zero,
+                                            shrinkWrap: true,
+                                            scrollDirection: Axis.vertical,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsets.all(6),
+                                                child: Container(
+                                                  width: double.infinity,
+                                                  height: 150,
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.white,
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                        blurRadius: 3,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        offset: Offset(
+                                                          0,
+                                                          1,
+                                                        ),
+                                                      )
+                                                    ],
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8),
+                                                    border: Border.all(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .primaryBackground,
+                                                    ),
+                                                  ),
+                                                  child: Container(
+                                                    height: 200,
+                                                    child: wrapWithModel(
+                                                      model: _model
+                                                          .component2Model,
+                                                      updateCallback: () =>
+                                                          safeSetState(() {}),
+                                                      child: Component2Widget(
+                                                        nnumber2:
+                                                            listViewReviewsRecord
+                                                                ?.nnumber,
+                                                        company:
+                                                            listViewReviewsRecord
+                                                                ?.nAMECompany,
+                                                        timestamp:
+                                                            getCurrentTimestamp
+                                                                .toString(),
+                                                        email1:
+                                                            currentUserEmail,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: AlignmentDirectional(0, 0),
+                              child: Container(
+                                width: 264,
+                                height: 677,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  border: Border.all(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                  ),
+                                ),
+                                alignment: AlignmentDirectional(0, 0),
+                                child: Align(
+                                  alignment: AlignmentDirectional(0, 0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Expanded(
+                                        child: Align(
+                                          alignment: AlignmentDirectional(0, 0),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            child: Image.asset(
+                                              'assets/images/8ccdcf1f-8a21-4904-9275-c85b55cb4446.jpg',
+                                              width: double.infinity,
+                                              height: double.infinity,
+                                              fit: BoxFit.cover,
+                                              alignment: Alignment(0, 0.06),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            await launchURL(
+                                                'https://www.youtube.com/@flysafecheck');
+                                          },
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            child: Image.asset(
+                                              'assets/images/5296521_play_video_vlog_youtube_youtube_logo_icon.png',
+                                              width: 250,
+                                              height: 150,
+                                              fit: BoxFit.contain,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            await launchURL(
+                                                'https://x.com/flysafecheck');
+                                          },
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            child: Image.asset(
+                                              'assets/images/twitterlogo.jpg',
+                                              width: 150,
+                                              height: 150,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 22, 0, 0),
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              await launchURL(
+                                                  'https://www.instagram.com/flysafecheck/');
+                                            },
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                              child: Image.asset(
+                                                'assets/images/1298747_instagram_brand_logo_social_media_icon.png',
+                                                width: 300,
+                                                height: 200,
+                                                fit: BoxFit.contain,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            if (valueOrDefault(
+                                        currentUserDocument
+                                            ?.stripeSubscriptionStatus,
+                                        '') ==
+                                    null ||
+                                valueOrDefault(
+                                        currentUserDocument
+                                            ?.stripeSubscriptionStatus,
+                                        '') ==
+                                    '')
+                              Expanded(
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    if (valueOrDefault(
+                                                currentUserDocument
+                                                    ?.stripeSubscriptionStatus,
+                                                '') ==
+                                            null ||
+                                        valueOrDefault(
+                                                currentUserDocument
+                                                    ?.stripeSubscriptionStatus,
+                                                '') ==
+                                            '')
+                                      Expanded(
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            if (valueOrDefault(
+                                                        currentUserDocument
+                                                            ?.stripeSubscriptionStatus,
+                                                        '') ==
+                                                    null ||
+                                                valueOrDefault(
+                                                        currentUserDocument
+                                                            ?.stripeSubscriptionStatus,
+                                                        '') ==
+                                                    '')
+                                              Align(
+                                                alignment:
+                                                    AlignmentDirectional(0, 0),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(0, 30, 0, 0),
+                                                  child: RichText(
+                                                    textScaler:
+                                                        MediaQuery.of(context)
+                                                            .textScaler,
+                                                    text: TextSpan(
+                                                      children: [
+                                                        TextSpan(
+                                                          text:
+                                                              'âEmpowering Passengers Through AIâ \nFor more aircraft information subscribe below',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                font: GoogleFonts
+                                                                    .readexPro(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                  fontStyle:
+                                                                      FontStyle
+                                                                          .italic,
+                                                                ),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                                fontSize: 16,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                fontStyle:
+                                                                    FontStyle
+                                                                        .italic,
+                                                              ),
+                                                        )
+                                                      ],
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                font: GoogleFonts
+                                                                    .readexPro(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                fontSize: 15,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                              ),
+                                                    ),
+                                                    textAlign: TextAlign.center,
+                                                  ),
+                                                ),
+                                              ),
+                                            if (valueOrDefault(
+                                                        currentUserDocument
+                                                            ?.stripeSubscriptionStatus,
+                                                        '') ==
+                                                    null ||
+                                                valueOrDefault(
+                                                        currentUserDocument
+                                                            ?.stripeSubscriptionStatus,
+                                                        '') ==
+                                                    '')
+                                              Expanded(
+                                                child: Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0, 0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceEvenly,
+                                                    children: [
+                                                      if (valueOrDefault(
+                                                                  currentUserDocument
+                                                                      ?.stripeSubscriptionStatus,
+                                                                  '') ==
+                                                              null ||
+                                                          valueOrDefault(
+                                                                  currentUserDocument
+                                                                      ?.stripeSubscriptionStatus,
+                                                                  '') ==
+                                                              '')
+                                                        Expanded(
+                                                          child: Container(
+                                                            height: 100,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .tertiary,
+                                                              shape: BoxShape
+                                                                  .rectangle,
+                                                              border:
+                                                                  Border.all(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .tertiary,
+                                                              ),
+                                                            ),
+                                                            child: Visibility(
+                                                              visible: valueOrDefault(
+                                                                          currentUserDocument
+                                                                              ?.stripeSubscriptionStatus,
+                                                                          '') ==
+                                                                      null ||
+                                                                  valueOrDefault(
+                                                                          currentUserDocument
+                                                                              ?.stripeSubscriptionStatus,
+                                                                          '') ==
+                                                                      '',
+                                                              child: InkWell(
+                                                                splashColor: Colors
+                                                                    .transparent,
+                                                                focusColor: Colors
+                                                                    .transparent,
+                                                                hoverColor: Colors
+                                                                    .transparent,
+                                                                highlightColor:
+                                                                    Colors
+                                                                        .transparent,
+                                                                onTap:
+                                                                    () async {
+                                                                  context.pushNamed(
+                                                                      HomeWidget
+                                                                          .routeName);
+                                                                },
+                                                                child: Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .center,
+                                                                  children: [
+                                                                    if (valueOrDefault(currentUserDocument?.stripeSubscriptionStatus, '') ==
+                                                                            null ||
+                                                                        valueOrDefault(currentUserDocument?.stripeSubscriptionStatus,
+                                                                                '') ==
+                                                                            '')
+                                                                      Text(
+                                                                        'SUBSCRIBE HERE',
+                                                                        textAlign:
+                                                                            TextAlign.center,
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              font: GoogleFonts.readexPro(
+                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                              ),
+                                                                              fontSize: 30,
+                                                                              letterSpacing: 0.0,
+                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                            ),
+                                                                      ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                          ],
+                                        ),
+                                      ),
+                                  ],
+                                ),
+                              ),
+                          ],
+                        ),
+                      ),
+                      if (valueOrDefault(
+                                  currentUserDocument?.stripeSubscriptionStatus,
+                                  '') !=
+                              null &&
+                          valueOrDefault(
+                                  currentUserDocument?.stripeSubscriptionStatus,
+                                  '') !=
+                              '')
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            if (valueOrDefault(
+                                        currentUserDocument
+                                            ?.stripeSubscriptionStatus,
+                                        '') !=
+                                    null &&
+                                valueOrDefault(
+                                        currentUserDocument
+                                            ?.stripeSubscriptionStatus,
+                                        '') !=
+                                    '')
+                              Expanded(
+                                child: Align(
+                                  alignment: AlignmentDirectional(0, 0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      _model.portalResponse =
+                                          await StripeSubscriptionGroup
+                                              .customerPortalCall
+                                              .call(
+                                        customer: valueOrDefault(
+                                            currentUserDocument?.stripeCustId,
+                                            ''),
+                                      );
+
+                                      if ((_model.portalResponse?.succeeded ??
+                                          true)) {
+                                        await launchURL(StripeSubscriptionGroup
+                                            .customerPortalCall
+                                            .url(
+                                          (_model.portalResponse?.jsonBody ??
+                                              ''),
+                                        )!);
+                                      }
+
+                                      safeSetState(() {});
+                                    },
+                                    child: Container(
+                                      width: double.infinity,
+                                      height: 100,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .warning,
+                                      ),
+                                      child: Visibility(
+                                        visible: valueOrDefault(
+                                                    currentUserDocument
+                                                        ?.stripeSubscriptionStatus,
+                                                    '') !=
+                                                null &&
+                                            valueOrDefault(
+                                                    currentUserDocument
+                                                        ?.stripeSubscriptionStatus,
+                                                    '') !=
+                                                '',
+                                        child: Align(
+                                          alignment: AlignmentDirectional(0, 0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              if (valueOrDefault(
+                                                          currentUserDocument
+                                                              ?.stripeSubscriptionStatus,
+                                                          '') !=
+                                                      null &&
+                                                  valueOrDefault(
+                                                          currentUserDocument
+                                                              ?.stripeSubscriptionStatus,
+                                                          '') !=
+                                                      '')
+                                                Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0, 0),
+                                                  child: Icon(
+                                                    Icons.manage_accounts,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    size: 40,
+                                                  ),
+                                                ),
+                                              if (valueOrDefault(
+                                                          currentUserDocument
+                                                              ?.stripeSubscriptionStatus,
+                                                          '') !=
+                                                      null &&
+                                                  valueOrDefault(
+                                                          currentUserDocument
+                                                              ?.stripeSubscriptionStatus,
+                                                          '') !=
+                                                      '')
+                                                Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0, 0),
+                                                  child: Text(
+                                                    'Manage Account (To access popup blocker must be turned off)',
+                                                    textAlign: TextAlign.center,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .readexPro(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          fontSize: 15,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                  ),
+                                                ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                          ],
+                        ),
+                      Expanded(
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: Align(
+                                alignment: AlignmentDirectional(0, 0),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context
+                                        .pushNamed(ContactCopyWidget.routeName);
+                                  },
+                                  child: Container(
+                                    height: 50,
+                                    decoration: BoxDecoration(),
+                                    alignment: AlignmentDirectional(0, 0),
+                                    child: Text(
+                                      'About',
+                                      textAlign: TextAlign.center,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
+                                            fontSize: 14,
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  context.pushNamed(
+                                      TermsOfServiceWidget.routeName);
+                                },
+                                child: Container(
+                                  height: 50,
+                                  decoration: BoxDecoration(),
+                                  alignment: AlignmentDirectional(0, 0),
+                                  child: Text(
+                                    'Terms of Service',
+                                    textAlign: TextAlign.center,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          font: GoogleFonts.readexPro(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                          fontSize: 14,
+                                          letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  context
+                                      .pushNamed(PrivacyPolicyWidget.routeName);
+                                },
+                                child: Container(
+                                  height: 50,
+                                  decoration: BoxDecoration(),
+                                  alignment: AlignmentDirectional(0, 0),
+                                  child: Text(
+                                    'Privacy Policy',
+                                    textAlign: TextAlign.center,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          font: GoogleFonts.readexPro(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                          fontSize: 14,
+                                          letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  context.pushNamed(ContactWidget.routeName);
+                                },
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 50,
+                                  decoration: BoxDecoration(),
+                                  alignment: AlignmentDirectional(0, 0),
+                                  child: Text(
+                                    'Contact',
+                                    textAlign: TextAlign.center,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          font: GoogleFonts.readexPro(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                          fontSize: 14,
+                                          letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
